@@ -53,6 +53,7 @@ python -m tests.test_a2a_hello
 Agent capabilities can be discovered by accessing:
 ```
 GET http://localhost:8002/.well-known/agent.json
+```
 
 ### Acknowledgements
 
