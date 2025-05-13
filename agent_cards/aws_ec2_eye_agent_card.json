@@ -1,0 +1,58 @@
+{
+  "name": "AWS EC2 Eye Agent",
+  "description": "Analyzes EC2 instances to identify trusted versus untrusted Amazon Machine Images (AMIs) and their snapshot lineage.",
+  "url": "YOUR_SERVER_BASE_URL_FOR_AWS_ANALYZER",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "authentication": null,
+  "defaultInputModes": ["json"],
+  "defaultOutputModes": ["json"],
+  "skills": [
+    {
+      "id": "analyze",
+      "name": "Analyze EC2 AMIs",
+      "description": "Inspects all AMIs in your account for trusted versus unknown images and checks their snapshot lineage for security risks.",
+      "tags": ["aws", "security", "analysis", "ec2", "ami", "snapshots"],
+      "examples": [
+        "Analyze EC2 instances for untrusted AMIs.",
+        "Identify which EC2 images are from unknown sources.",
+        "Check snapshot lineage for EC2 instances."
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["json"],
+      "parameters": [
+        {
+          "name": "regions",
+          "description": "List of AWS regions to include in the analysis (e.g., ['us-east-1', 'us-west-2']).",
+          "required": false,
+          "schema": {"type": "array", "items": {"type": "string"}}
+        },
+        {
+          "name": "trusted_accounts",
+          "description": "List of account IDs to consider trusted",
+          "required": false,
+          "schema": {"type": "array", "items": {"type": "string"}}
+        },
+        {
+          "name": "profile",
+          "description": "AWS profile name to use for authentication.",
+          "required": false,
+          "schema": {"type": "string"}
+        },
+        {
+          "name": "verbose",
+          "description": "Enable detailed logging.",
+          "required": false,
+          "schema": {"type": "boolean"}
+        }
+      ]
+    }
+  ],
+  "agent_ids": [
+    "aws_ec2_eye-a2a"
+  ]
+} 

@@ -1,0 +1,42 @@
+{
+  "name": "Hello Test Agent",
+  "description": "A simple test agent that demonstrates A2A protocol integration.",
+  "url": "YOUR_SERVER_BASE_URL_FOR_TEST_AGENT",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "authentication": null,
+  "defaultInputModes": ["text", "json"],
+  "defaultOutputModes": ["json"],
+  "skills": [
+    {
+      "id": "greet",
+      "name": "Hello A2A Analyzer",
+      "description": "A test analyzer that demonstrates A2A protocol integration.",
+      "tags": ["hello", "greeting", "test", "a2a"],
+      "examples": ["Say hello to John.", "Greet the user with name Jane."],
+      "inputModes": ["json"],
+      "outputModes": ["json"],
+      "parameters": [
+        {
+          "name": "name",
+          "description": "Name of the person to greet",
+          "required": false,
+          "schema": {"type": "string"}
+        },
+        {
+          "name": "message",
+          "description": "Custom message to include in the greeting",
+          "required": false,
+          "schema": {"type": "string"}
+        }
+      ]
+    }
+  ],
+  "agent_ids": [
+    "hello-a2a-analyzer-001"
+  ]
+} 

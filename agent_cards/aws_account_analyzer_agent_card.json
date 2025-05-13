@@ -1,0 +1,58 @@
+{
+  "name": "AWS Account Analysis Agent",
+  "description": "Identifies external entities that have access to your AWS account through IAM roles and S3 bucket policies.",
+  "url": "YOUR_SERVER_BASE_URL_FOR_AWS_ANALYZER",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "authentication": null,
+  "defaultInputModes": ["json"],
+  "defaultOutputModes": ["json"],
+  "skills": [
+    {
+      "id": "analyze",
+      "name": "Analyze AWS External Access",
+      "description": "Analyzes IAM role trust policies and S3 bucket policies to identify external accounts with access to your AWS environment.",
+      "tags": ["aws", "security", "analysis", "iam", "s3", "external-access"],
+      "examples": [
+        "Analyze AWS account 111122223333 for external access.",
+        "Check which external entities can access my AWS account.",
+        "Identify IAM roles that might be vulnerable to confused deputy attacks."
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["json"],
+      "parameters": [
+        {
+          "name": "aws_account_id",
+          "description": "The AWS account ID to analyze.",
+          "required": true,
+          "schema": {"type": "string"}
+        },
+        {
+          "name": "trusted_accounts_file",
+          "description": "Path to YAML file containing trusted account definitions",
+          "required": false,
+          "schema": {"type": "string"}
+        },
+        {
+          "name": "trusted_accounts",
+          "description": "List of account IDs to consider trusted",
+          "required": false,
+          "schema": {"type": "array", "items": {"type": "string"}}
+        },
+        {
+          "name": "profile",
+          "description": "AWS profile name to use for authentication.",
+          "required": false,
+          "schema": {"type": "string"}
+        }
+      ]
+    }
+  ],
+  "agent_ids": [
+    "aws_account_analysis-a2a"
+  ]
+} 
